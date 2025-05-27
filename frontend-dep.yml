@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: prabakaran32/todo_frontend:1834791509
+          image: prabakaran32/frontend-app-k8:latest
           ports:
             - containerPort: 3000
           env:
