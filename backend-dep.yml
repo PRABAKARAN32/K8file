@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-backend
+  labels:
+    app: todo
+    tier: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp-todo-backend-service
+  template:
+    metadata:
+      labels:
+        app: myapp-todo-backend-service
+    spec:
+      containers:
+        - name: backend
+          image: prabakaran32/todo_backend:1834791509
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_URI
+              value: "mongodb+srv://prabakaran:PKlegend32@cluster0.galkvbj.mongodb.net/TODO?retryWrites=true&w=majority&appName=Cluster0"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
